@@ -24,8 +24,8 @@ let lispPackages = rec {
       quicklispdist = pkgs.fetchurl {
         # Will usually be replaced with a fresh version anyway, but needs to be
         # a valid distinfo.txt
-        url = "http://beta.quicklisp.org/dist/quicklisp/2018-08-31/distinfo.txt";
-        sha256 = "1im4p6vcxkp5hrim28cdf5isyw8a1v9aqsz2xfsfp3z3qd49dixd";
+        url = "http://beta.quicklisp.org/dist/quicklisp/2018-10-18/distinfo.txt";
+        sha256 = "123r756h8wwb9m5abml9cf04v57a6fnxp48csdzhx1xd40cy92k3";
       };
       buildPhase = '' true; '';
       postInstall = ''
