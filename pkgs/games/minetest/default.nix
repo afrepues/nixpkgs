@@ -2,7 +2,12 @@
 , libjpeg, libXxf86vm, libGLU_combined, openal, libvorbis, xlibsWrapper, sqlite, luajit
 , freetype, gettext, doxygen, ncurses, graphviz, xorg
 , leveldb, postgresql, hiredis
+, games ? (x: [])
+, mods  ? (x: [])
 }:
+
+# TODO: Convert `data` from source to package/derivation
+# TODO: Build `games` directory as a composed from all games directories
 
 with stdenv.lib;
 
