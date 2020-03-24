@@ -73,12 +73,21 @@ in lib.makeScope newScope (self: lib.makeOverridable ({
   , melpaPackages ? mkMelpaPackages self
   , orgPackages ? mkOrgPackages self
   , manualPackages ? mkManualPackages self
-}: ({}
-  // elpaPackages // { inherit elpaPackages; }
-  // melpaStablePackages // { inherit melpaStablePackages; }
-  // melpaPackages // { inherit melpaPackages; }
-  // orgPackages // { inherit orgPackages; }
-  // manualPackages
+  , buildEpkgs ? ({
+      elpaPackages
+      , melpaStablePackages
+      , melpaPackages
+      , orgPackages
+      , manualPackages
+  }: {}
+     // elpaPackages // { inherit elpaPackages; }
+     // melpaStablePackages // { inherit melpaStablePackages; }
+     // melpaPackages // { inherit melpaPackages; }
+     // orgPackages // { inherit orgPackages; }
+     // manualPackages)
+}: ((buildEpkgs {
+       inherit elpaPackages melpaStablePackages melpaPackages orgPackages manualPackages;
+  })
   // {
     inherit emacs melpaBuild trivialBuild;
     emacsWithPackages = emacsWithPackages self;
