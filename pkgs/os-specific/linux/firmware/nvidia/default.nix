@@ -2,7 +2,7 @@
 
 let
   extractor = fetchurl {
-    url = https://raw.githubusercontent.com/imirkin/re-vp2/master/extract_firmware.py;
+    url = https://raw.githubusercontent.com/imirkin/re-vp2/d19d818d1e05c7c68afb052073cc8a487cac8f5d/extract_firmware.py;
     sha256 = "03dd1il0cjs8xi411pkckkfjga348j0cgd6dix20gd4kwmlvyjqm";
   };
 
