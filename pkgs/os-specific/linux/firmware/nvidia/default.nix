@@ -29,7 +29,17 @@ in stdenv.mkDerivation rec {
     runHook preInstall
 
     dir=$out/lib/firmware
-    ${stdenv.shell} ${src} --extract-only
+    NV_SKIP=$(
+        awk -v RS= 'NR == 1 { print; exit; }' ${src} |\
+            awk -v FS="=" '/^skip=[[:alnum:]]+$/ { print $2 }'
+    )
+    NV_TARGET_DIR=$(
+        awk -v RS= 'NR == 1 { print; exit; }' ${src} |\
+            awk -v FS="=" '/^targetdir=[-.[:alnum:]]+$/ { print $2 }'
+    )
+
+    mkdir -p $NV_TARGET_DIR
+    tail -n +$NV_SKIP ${src} | xz -d | tar xv -C $NV_TARGET_DIR
     ${python2Packages.python.interpreter} ${extractor}
 
     mkdir -p $dir/{nouveau,nvidia}
