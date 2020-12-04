@@ -13,7 +13,7 @@ let
   ];
 
 in stdenv.mkDerivation rec {
-  name = "linux-firmware-nvidia-${version}";
+  pname = "linux-firmware-nvidia";
   version = "325.15";
 
   src = fetchurl {
