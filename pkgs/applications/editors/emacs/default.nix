@@ -37,5 +37,26 @@ lib.makeScope pkgs.newScope (
         srcRepo = true;
       }
     );
+
+    emacs31 = callPackage (self.sources.emacs31) inheritedArgs;
+
+    emacs31-gtk3 = self.emacs31.override {
+      withGTK3 = true;
+    };
+
+    emacs31-nox = self.emacs31.override {
+      noGui = true;
+    };
+
+    emacs31-pgtk = self.emacs31.override {
+      withPgtk = true;
+    };
+
+    emacs31-macport = callPackage (self.sources.emacs31-macport) (
+      inheritedArgs
+      // {
+        srcRepo = true;
+      }
+    );
   }
 )
